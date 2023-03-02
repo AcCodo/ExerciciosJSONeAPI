@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <button onclick="getListaClientes()">Preencher</button>
+    <table id="listaClientes">
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+
+    </table>
+</body>
+<script>
+
+    function getListaClientes() {
+        fetch('https://demo8138539.mockable.io/segundo-exercicio')
+        .then(response => response.json())
+        .then(data => criarTabela(data))
+        .catch(error => alert(error))
+    }
+
+    function criarTabela(data) {
+        for (let i = 0; i < data.length; i++) {
+            let new_text = `<tr><td>${data[i].nome}</td><td>${data[i].endereco}</td><td>${data[i].telefone}</td></tr>`
+            document.getElementById('listaClientes').innerHTML += new_text
+        }
+    }
+
+</script>
+</html>

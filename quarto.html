@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body onload="getMaterias()">
+    <div id="materias">
+
+    </div>
+</body>
+<script>
+
+    function getMaterias() {
+        fetch('https://demo8138539.mockable.io/quarto-exercicio')
+        .then(response => response.json())
+        .then(data => criarLista(data))
+        .catch(error => alert(error))
+    }
+
+    function criarLista(data) {
+        for (let i = 0; i < data.length; i++) {
+            let new_text = `<li>${data[i]}</li><br>`
+            document.getElementById('materias').innerHTML += new_text
+        }
+    }
+
+</script>
+</html>

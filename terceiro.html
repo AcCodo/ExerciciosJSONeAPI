@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <select name="carros" id="carros" onclick="getCarros()">
+        <option selected disabled value="-1">Selecione o Carro</option>
+
+    </select>
+    
+</body>
+<script>
+    let loaded = false
+
+    function getCarros() {
+        fetch('http://demo8138539.mockable.io/terceiro-exercicio')
+        .then(response => response.json())
+        .then(data => preencherCombobox(data))
+        .catch(error => alert(error))
+    }
+
+    function preencherCombobox(data) {
+        if (!loaded) {
+            for (let i = 0; i < data.length; i++) {
+                let new_text = `<option value="${data[i]}">${data[i]}</option>`
+                document.getElementById('carros').innerHTML += new_text
+                loaded = true
+            }
+        }
+    }
+
+</script>
+</html>
