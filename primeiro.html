@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <button onclick="getCEP()">Preencher</button><br>
+    <input type="text" name="cep" id="cep">
+    <input type="text" name="logradouro" id="logradouro">
+    <input type="text" name="complemento" id="complemento">
+    <input type="text" name="bairro" id="bairro">
+    <input type="text" name="localidade" id="localidade">
+    <input type="text" name="uf" id="uf">
+    <input type="text" name="ibge" id="ibge">
+    <input type="text" name="gia" id="gia">
+    <input type="text" name="ddd" id="ddd">
+    <input type="text" name="siafi" id="siafi">
+</body>
+<script>
+
+    function getCEP() {
+        fetch('https://viacep.com.br/ws/01415000/json')
+        .then(response => response.json())
+        .then(data => preencherDados(data))
+        .catch(error => alert(error))
+    }
+
+    function preencherDados(data) {
+        debugger
+        document.getElementById('cep').value = data.cep
+        document.getElementById('logradouro').value = data.logradouro
+        document.getElementById('complemento').value = data.complemento
+        document.getElementById('bairro').value = data.bairro
+        document.getElementById('localidade').value = data.localidade
+        document.getElementById('uf').value = data.uf
+        document.getElementById('ibge').value = data.ibge
+        document.getElementById('gia').value = data.gia
+        document.getElementById('ddd').value = data.ddd
+        document.getElementById('siafi').value = data.siafi
+    }
+
+</script>
+</html>
